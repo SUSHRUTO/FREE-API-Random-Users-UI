@@ -27,7 +27,7 @@ UserVerse allows users to explore developer-style profiles with advanced filteri
 
 - HTML5
 - CSS3
-- JavaScript (Vanilla JS)
+- JavaScript
 - Tailwind CSS
 - FreeAPI
 
