@@ -115,7 +115,7 @@ Active filters are highlighted dynamically.
 Download or clone the repository.
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_LINK
+git clone https://github.com/SUSHRUTO/FREE-API-Random-Users-UI
 ```
 
 ---
@@ -194,13 +194,8 @@ Example:
 https://free-api-random-users-ui.netlify.app/
 ```
 
-```
 
----
 
 # ⭐ Project Name
 
 UserVerse – Tech Talent Explorer Dashboard
-
-
----
