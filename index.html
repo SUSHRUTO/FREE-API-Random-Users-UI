@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>
+    UserVerse - Tech Talent Explorer
+  </title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body class="bg-gray-950 text-white min-h-screen font-sans">
+
+  <!-- HERO GLOW -->
+  <div class="hero-glow top-[-200px] left-[-150px] fixed"></div>
+
+  <div class="hero-glow bottom-[-200px] right-[-150px] fixed"></div>
+
+  <!-- NAVBAR -->
+  <header
+    class="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-xl border-b border-gray-800 shadow-xl"
+  >
+
+    <div
+      class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row gap-4 justify-between items-center"
+    >
+
+      <div>
+
+        <h1
+          class="text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+        >
+          👤 UserVerse
+        </h1>
+
+        <p class="text-gray-400 text-sm mt-1">
+          Professional Tech Talent Explorer Dashboard
+        </p>
+
+      </div>
+
+      <button
+        onclick="fetchUsers()"
+        class="action-btn bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 px-6 py-3 rounded-2xl font-semibold transition duration-300 shadow-lg"
+      >
+        Refresh Users
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+  <section
+    class="relative overflow-hidden bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-700 py-24"
+  >
+
+    <div
+      class="max-w-5xl mx-auto px-6 text-center relative z-10"
+    >
+
+      <h2
+        class="text-5xl md:text-7xl font-black leading-tight"
+      >
+
+        Explore Random
+
+        <span class="text-cyan-200">
+          Tech Talents 🌍
+        </span>
+
+      </h2>
+
+      <p
+        class="mt-8 text-xl text-cyan-100 max-w-3xl mx-auto leading-relaxed"
+      >
+
+        Browse premium software engineering profiles powered by FreeAPI
+        with modern dashboard-style UI and intelligent user exploration.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURED USER -->
+  <section class="max-w-7xl mx-auto px-6 py-14">
+
+    <div
+      class="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-3xl overflow-hidden shadow-2xl"
+    >
+
+      <div
+        class="grid md:grid-cols-2 gap-10 items-center p-10"
+      >
+
+        <!-- IMAGE -->
+        <div class="flex justify-center">
+
+          <img
+            id="featured-user-image"
+            src=""
+            alt="Featured User"
+            class="w-72 h-72 rounded-full object-cover border-8 border-white/20 shadow-2xl"
+          />
+
+        </div>
+
+        <!-- CONTENT -->
+        <div>
+
+          <span
+            class="bg-white/20 px-4 py-2 rounded-full text-sm font-semibold"
+          >
+            🌟 Featured Professional
+          </span>
+
+          <h2
+            id="featured-user-name"
+            class="text-5xl font-black mt-6"
+          >
+            Random User
+          </h2>
+
+          <p
+            id="featured-user-role"
+            class="text-cyan-100 text-xl mt-4"
+          >
+            Software Engineer
+          </p>
+
+          <p
+            id="featured-user-location"
+            class="text-cyan-200 mt-4 text-lg"
+          >
+            🌍 Country
+          </p>
+
+          <p
+            id="featured-user-email"
+            class="text-cyan-200 mt-3 text-lg break-all"
+          >
+            📧 user@email.com
+          </p>
+
+          <div class="mt-8 flex gap-4 flex-wrap">
+
+            <button
+              onclick="generateRandomUser()"
+              class="action-btn bg-white text-black hover:scale-105 px-6 py-3 rounded-2xl font-semibold transition"
+            >
+              Generate Random User
+            </button>
+
+            <button
+              onclick="showDevelopers()"
+              class="action-btn bg-black/30 hover:bg-black/50 px-6 py-3 rounded-2xl font-semibold transition"
+            >
+              Show Developers
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SEARCH + FILTERS -->
+  <section class="max-w-7xl mx-auto px-6 py-12">
+
+    <!-- SEARCH -->
+    <div class="flex justify-center mb-10">
+
+      <div class="w-full max-w-3xl flex gap-4">
+
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search random names like Rahul, Priya, Dilip..."
+          class="w-full px-6 py-5 rounded-2xl text-black text-lg focus:outline-none focus:ring-4 focus:ring-cyan-200"
+        />
+
+        <button
+          onclick="searchUsers()"
+          class="action-btn bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-105 px-8 py-4 rounded-2xl font-semibold transition duration-300 shadow-lg"
+        >
+          Search
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- FILTERS -->
+    <div
+      class="flex flex-wrap gap-5 justify-center"
+    >
+
+      <button
+        onclick="filterUsers('all', this)"
+        class="filter-btn active-filter px-6 py-3 rounded-full font-semibold transition duration-300"
+      >
+        All Users
+      </button>
+
+      <button
+        onclick="filterUsers('male', this)"
+        class="filter-btn px-6 py-3 rounded-full font-semibold transition duration-300"
+      >
+        Male
+      </button>
+
+      <button
+        onclick="filterUsers('female', this)"
+        class="filter-btn px-6 py-3 rounded-full font-semibold transition duration-300"
+      >
+        Female
+      </button>
+
+      <button
+        onclick="showIndianUsers(this)"
+        class="filter-btn px-6 py-3 rounded-full font-semibold transition duration-300"
+      >
+        🇮🇳 Indian Users
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- LOADING -->
+  <section class="max-w-7xl mx-auto px-6">
+
+    <p
+      id="loading"
+      class="hidden text-center text-2xl font-bold text-cyan-300"
+    >
+      Loading users...
+    </p>
+
+  </section>
+
+  <!-- USERS GRID -->
+  <main class="max-w-7xl mx-auto px-6 pb-20">
+
+    <div
+      id="users-container"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+    ></div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer
+    class="border-t border-gray-800 py-10 text-center text-gray-500 text-sm backdrop-blur-xl"
+  >
+
+    © 2026 UserVerse | Built using FreeAPI Random Users Endpoint
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
