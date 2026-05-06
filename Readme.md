@@ -188,8 +188,6 @@ Sushruto
 
 ## Live Project Link
 
-Example:
-
 ```bash
 https://free-api-random-users-ui.netlify.app/
 ```
